@@ -3,7 +3,7 @@
   "private": true,
   "version": "1.0.0",
   "type": "module",
-  "main": "electron.js",
+  "main": "electron.cjs",
   "author": "Kouskouras D. <kouskourasd@gmail.com>",
   "description": "Areti - Autonomous AI Agent powered by Gemini (free)",
   "scripts": {
@@ -19,7 +19,7 @@
     "appId": "com.areti.ai-agent",
     "productName": "Areti AI Agent",
     "directories": { "output": "release" },
-    "files": ["dist/**/*", "electron.js"],
+    "files": ["dist/**/*", "electron.cjs"],
     "win": { "target": "nsis" },
     "nsis": {
       "oneClick": false,
