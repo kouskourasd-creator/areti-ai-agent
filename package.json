@@ -1,13 +1,47 @@
 {
-  "name": "gitlawb-app",
+  "name": "areti-ai-agent",
   "private": true,
-  "version": "0.0.0",
+  "version": "1.0.0",
   "type": "module",
+  "main": "electron.js",
+  "author": "Kouskouras D. <kouskourasd@gmail.com>",
+  "description": "Areti - Autonomous AI Agent",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
     "typecheck": "tsc -b",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "electron:start": "electron .",
+    "electron:build": "vite build && electron-builder --win",
+    "electron:build:linux": "vite build && electron-builder --linux",
+    "electron:build:mac": "vite build && electron-builder --mac"
+  },
+  "build": {
+    "appId": "com.areti.ai-agent",
+    "productName": "Areti AI Agent",
+    "directories": {
+      "output": "release"
+    },
+    "files": [
+      "dist/**/*",
+      "electron.js"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "dist/favicon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Areti AI"
+    },
+    "linux": {
+      "target": "AppImage"
+    },
+    "mac": {
+      "target": "dmg"
+    }
   },
   "dependencies": {
     "react": "^19.0.0",
@@ -17,6 +51,8 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.4",
+    "electron": "^33.0.0",
+    "electron-builder": "^25.1.8",
     "typescript": "^5.6.3",
     "vite": "^6.0.7"
   }

@@ -1156,6 +1156,177 @@ html, body, #root {
   background: var(--border-hover);
 }
 
+/* ─── Action Cards (Approval System) ─── */
+.action-card {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+  margin-top: 0.65rem;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+}
+
+.action-card-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.6rem 0.85rem;
+  border-bottom: 1px solid var(--border);
+}
+
+.action-card-header.pending {
+  background: #fffbeb;
+  border-bottom-color: #fde68a;
+}
+
+.action-card-header.approved {
+  background: var(--green-light);
+  border-bottom-color: #bbf7d0;
+}
+
+.action-card-header.executing {
+  background: var(--blue-light);
+  border-bottom-color: var(--blue-medium);
+}
+
+.action-card-header.completed {
+  background: var(--green-light);
+  border-bottom-color: #bbf7d0;
+}
+
+.action-card-header.denied {
+  background: #fef2f2;
+  border-bottom-color: #fecaca;
+}
+
+.action-status-icon {
+  font-size: 0.85rem;
+}
+
+.action-status-text {
+  font-size: 0.72rem;
+  font-weight: 600;
+  letter-spacing: 0.02em;
+}
+
+.action-card-header.pending .action-status-text { color: #b45309; }
+.action-card-header.approved .action-status-text { color: #15803d; }
+.action-card-header.executing .action-status-text { color: var(--blue); }
+.action-card-header.completed .action-status-text { color: #15803d; }
+.action-card-header.denied .action-status-text { color: #dc2626; }
+
+.action-card-body {
+  padding: 0.75rem 0.85rem;
+}
+
+.action-title {
+  font-size: 0.88rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+  color: var(--text);
+}
+
+.action-desc {
+  font-size: 0.78rem;
+  color: var(--text-secondary);
+  line-height: 1.5;
+  margin-bottom: 0.65rem;
+}
+
+.action-steps {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 0.75rem;
+}
+
+.action-steps li {
+  display: flex;
+  align-items: center;
+  gap: 0.45rem;
+  padding: 0.25rem 0;
+  font-size: 0.76rem;
+  color: var(--text-secondary);
+}
+
+.action-steps li .step-icon {
+  font-size: 0.7rem;
+  width: 18px;
+  text-align: center;
+}
+
+.action-steps li .step-icon.done { color: var(--green); }
+.action-steps li .step-icon.pending { color: var(--text-tertiary); }
+.action-steps li .step-icon.running { color: var(--orange); animation: pulse 1.5s ease-in-out infinite; }
+
+.action-card-footer {
+  display: flex;
+  gap: 0.5rem;
+  padding: 0.65rem 0.85rem;
+  border-top: 1px solid var(--border);
+  background: var(--surface-2);
+}
+
+.btn-approve {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: var(--green);
+  color: white;
+  transition: all 0.15s;
+}
+
+.btn-approve:hover { background: #15803d; }
+
+.btn-deny {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.4rem 0.85rem;
+  border-radius: var(--radius-sm);
+  font-size: 0.76rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: 1px solid var(--border);
+  background: var(--surface);
+  color: var(--text-secondary);
+  transition: all 0.15s;
+}
+
+.btn-deny:hover { background: #fef2f2; border-color: #fecaca; color: #dc2626; }
+
+/* Execution log inside action card */
+.execution-log {
+  background: #0f172a;
+  border-radius: var(--radius-sm);
+  padding: 0.6rem 0.75rem;
+  margin-top: 0.5rem;
+  max-height: 150px;
+  overflow-y: auto;
+}
+
+.execution-log-line {
+  font-family: "SF Mono", "Fira Code", ui-monospace, monospace;
+  font-size: 0.7rem;
+  line-height: 1.6;
+  color: #e2e8f0;
+}
+
+.execution-log-line .log-prefix {
+  color: #64748b;
+  margin-right: 0.4rem;
+}
+
+.execution-log-line .log-success { color: #4ade80; }
+.execution-log-line .log-info { color: #38bdf8; }
+.execution-log-line .log-warn { color: #fbbf24; }
+.execution-log-line .log-error { color: #f87171; }
+
 /* ─── Download progress bar ─── */
 .download-progress {
   height: 4px;
