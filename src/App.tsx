@@ -40,22 +40,43 @@ export default function App() {
     setInput("");
     setIsTyping(true);
 
+    if (!apiKey) {
+      setMessages(prev => [...prev, { role: "assistant", content: "Please set your Gemini API key first! Click the gear icon in the top right corner.\n\nGet a free key at: https://aistudio.google.com/apikey (no credit card needed)" }]);
+      setIsTyping(false);
+      return;
+    }
+
     try {
-      const res = await fetch("/api/chat", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ messages: updatedMessages, apiKey })
-      });
+      const systemPrompt = `You are Areti, an autonomous AI agent created by Kouskouras D. (kouskourasd@gmail.com). You are helpful, smart, and proactive. You respond in the same language the user writes in. When asked to do something, you propose a plan and ask for approval. You write clean, well-commented code. You explain things clearly with examples. Always be concise but thorough.`;
+
+      const contents = updatedMessages.map(m => ({
+        role: m.role === "assistant" ? "model" : "user",
+        parts: [{ text: m.content }]
+      }));
+
+      const res = await fetch(
+        `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.0-flash:generateContent?key=${apiKey}`,
+        {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            system_instruction: { parts: [{ text: systemPrompt }] },
+            contents,
+            generationConfig: { maxOutputTokens: 4096, temperature: 0.7 }
+          })
+        }
+      );
 
       const data = await res.json();
 
       if (data.error) {
-        setMessages(prev => [...prev, { role: "assistant", content: `Error: ${data.error}` }]);
+        setMessages(prev => [...prev, { role: "assistant", content: `Error: ${data.error.message}` }]);
       } else {
-        setMessages(prev => [...prev, { role: "assistant", content: data.reply }]);
+        const reply = data.candidates?.[0]?.content?.parts?.[0]?.text || "No response.";
+        setMessages(prev => [...prev, { role: "assistant", content: reply }]);
       }
-    } catch {
-      setMessages(prev => [...prev, { role: "assistant", content: "Could not connect to server. Make sure you run: npm run server" }]);
+    } catch (err) {
+      setMessages(prev => [...prev, { role: "assistant", content: `Connection error: ${err}` }]);
     } finally {
       setIsTyping(false);
     }
