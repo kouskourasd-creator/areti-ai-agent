@@ -1,20 +1,6 @@
 # Areti AI Agent
 
-An autonomous AI agent that learns, reasons, and assists across 12+ languages.
-
-## Features
-
-- **Autonomous Mode** — Learns and operates without manual training
-- **Multilingual** — Supports 12+ languages with auto-detection
-- **System Optimization** — Monitors and optimizes your PC in real-time
-- **Code Learning** — Learns programming patterns and best practices
-- **Web Search** — Searches the web for answers it doesn't have locally
-- **Reasoning Engine** — Shows its thinking process step by step
-- **Knowledge Base** — Continuously grows from conversations and web data
-
-## Supported Languages
-
-Greek, English, French, German, Spanish, Italian, Portuguese, Turkish, Arabic, Chinese, Japanese, Russian
+A real AI agent powered by Gemini (free). Talks, reasons, and helps in 12+ languages.
 
 ## Quick Start
 
@@ -22,50 +8,58 @@ Greek, English, French, German, Spanish, Italian, Portuguese, Turkish, Arabic, C
 git clone https://github.com/kouskourasd-creator/areti-ai-agent.git
 cd areti-ai-agent
 npm install
+npm run build
+npm run server
+```
+
+Open **http://localhost:3000** in your browser.
+
+### Get your free API key (no credit card):
+1. Go to https://aistudio.google.com/apikey
+2. Click "Create API Key"
+3. Copy the key
+4. In Areti, click the gear icon and paste it
+
+## Development Mode
+
+Run the server and Vite dev server in **two separate terminals**:
+
+**Terminal 1:**
+```bash
+npm run server
+```
+
+**Terminal 2:**
+```bash
 npm run dev
 ```
 
-Open `http://localhost:5171` in your browser.
+Open **http://localhost:5171** (Vite proxies API calls to the server).
 
 ## Build for Desktop (Windows EXE)
 
-```bash
-npm run electron:build
+```cmd
+build-windows.bat
 ```
 
-The EXE installer will be created in the `release/` folder.
-
-## Build for Android (APK)
-
+Or manually:
 ```bash
-npm install @capacitor/core @capacitor/cli
-npx cap init Areti com.areti.app
-npx cap add android
+npm install electron electron-builder --save-dev
 npm run build
-npx cap sync
-npx cap open android
-```
-
-## Build for Web (PWA)
-
-```bash
-npm run build
-npx serve dist
+npx electron-builder --win
 ```
 
 ## Tech Stack
 
-- React 19
-- TypeScript 5.6
-- Vite 6
-- Electron (for desktop builds)
-- Capacitor (for mobile builds)
+- React 19 + TypeScript + Vite
+- Express (server)
+- Google Gemini API (free tier)
+- Electron (desktop builds)
 
 ## Creator
 
-**Kouskouras D.**
-Email: kouskourasd@gmail.com
+**Kouskouras D.** — kouskourasd@gmail.com
 
 ## License
 
-MIT License. See [LICENSE](LICENSE) for details.
+MIT License.

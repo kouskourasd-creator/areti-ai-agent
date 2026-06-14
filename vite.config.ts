@@ -6,15 +6,9 @@ export default defineConfig({
   server: {
     host: "0.0.0.0",
     strictPort: true,
-    // Vite 6 blocks hosts not in this allowlist (CSRF protection). The
-    // playground serves previews via Fly's proxy at <app>.fly.dev with a
-    // routing header, so we allow .fly.dev plus the gitlawb published
-    // domain. Localhost stays allowed for local dev runs of the template.
-    allowedHosts: [
-      "localhost",
-      "127.0.0.1",
-      ".fly.dev",
-      ".gitlawb.app",
-    ],
+    allowedHosts: ["localhost", "127.0.0.1", ".fly.dev", ".gitlawb.app"],
+    proxy: {
+      "/api": "http://localhost:3000",
+    },
   },
 });
