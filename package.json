@@ -12,21 +12,25 @@
     "preview": "vite preview",
     "server": "node server.js",
     "start": "node server.js",
-    "electron:start": "electron .",
-    "electron:build": "vite build && electron-builder --win"
+    "electron:start": "npx electron .",
+    "electron:build": "vite build && npx electron-builder --win"
   },
   "build": {
     "appId": "com.areti.ai-agent",
     "productName": "Areti AI Agent",
     "directories": { "output": "release" },
-    "files": ["dist/**/*", "server.js", "electron.js"],
+    "files": ["dist/**/*", "electron.js"],
     "win": { "target": "nsis" },
-    "nsis": { "oneClick": false, "allowToChangeInstallationDirectory": true, "createDesktopShortcut": true, "shortcutName": "Areti AI" },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true,
+      "createDesktopShortcut": true,
+      "shortcutName": "Areti AI"
+    },
     "linux": { "target": "AppImage" },
     "mac": { "target": "dmg" }
   },
   "dependencies": {
-    "express": "^4.21.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
   },
@@ -34,8 +38,8 @@
     "@types/react": "^19.0.0",
     "@types/react-dom": "^19.0.0",
     "@vitejs/plugin-react": "^4.3.4",
-    "electron": "^33.0.0",
-    "electron-builder": "^25.1.8",
+    "electron": "33.0.0",
+    "electron-builder": "25.1.8",
     "typescript": "^5.6.3",
     "vite": "^6.0.7"
   }
