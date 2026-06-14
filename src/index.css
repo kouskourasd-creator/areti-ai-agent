@@ -112,3 +112,51 @@ html, body, #root { height: 100%; background: var(--bg); color: var(--text); }
 ::-webkit-scrollbar { width: 4px; }
 ::-webkit-scrollbar-track { background: transparent; }
 ::-webkit-scrollbar-thumb { background: rgba(255,255,255,0.08); border-radius: 2px; }
+
+/* Settings */
+.settings-btn {
+  width: 32px; height: 32px; border-radius: 8px; border: 1px solid var(--border);
+  background: transparent; color: var(--text-dim); cursor: pointer;
+  display: flex; align-items: center; justify-content: center; transition: all 0.15s;
+}
+.settings-btn:hover { color: var(--text); border-color: var(--blue); }
+
+.header-nokey {
+  font-size: 0.68rem; padding: 0.15rem 0.5rem; border-radius: 4px;
+  background: rgba(239,68,68,0.12); color: #f87171; font-weight: 600;
+}
+
+/* Modal */
+.modal-overlay {
+  position: fixed; inset: 0; background: rgba(0,0,0,0.6);
+  display: flex; align-items: center; justify-content: center;
+  z-index: 100; backdrop-filter: blur(4px);
+}
+.modal {
+  background: var(--surface); border: 1px solid var(--border);
+  border-radius: 14px; padding: 1.5rem; width: 90%; max-width: 400px;
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+}
+.modal h2 { font-size: 1.1rem; margin-bottom: 0.5rem; }
+.modal label { font-size: 0.78rem; font-weight: 600; color: var(--text-dim); display: block; margin-bottom: 0.3rem; }
+.modal-hint { font-size: 0.72rem; color: var(--text-dim); margin-bottom: 0.75rem; line-height: 1.5; }
+.modal-hint a { color: var(--blue); text-decoration: none; }
+.modal-hint a:hover { text-decoration: underline; }
+.modal input {
+  width: 100%; padding: 0.6rem 0.85rem; border-radius: 8px;
+  background: rgba(255,255,255,0.04); border: 1px solid var(--border);
+  color: var(--text); font-size: 0.85rem; font-family: inherit; outline: none;
+  margin-bottom: 1rem;
+}
+.modal input:focus { border-color: var(--blue); }
+.modal-actions { display: flex; gap: 0.5rem; justify-content: flex-end; }
+.btn-primary, .btn-secondary {
+  padding: 0.45rem 1rem; border-radius: 8px; font-size: 0.78rem;
+  font-weight: 600; cursor: pointer; border: none; font-family: inherit;
+  transition: all 0.15s;
+}
+.btn-primary { background: var(--blue); color: white; }
+.btn-primary:hover { background: var(--blue-dark); }
+.btn-primary:disabled { opacity: 0.4; cursor: default; }
+.btn-secondary { background: rgba(255,255,255,0.06); color: var(--text-dim); border: 1px solid var(--border); }
+.btn-secondary:hover { color: var(--text); }

@@ -5,7 +5,7 @@
   "type": "module",
   "main": "electron.js",
   "author": "Kouskouras D. <kouskourasd@gmail.com>",
-  "description": "Areti - Autonomous AI Agent powered by Claude",
+  "description": "Areti - Autonomous AI Agent powered by Gemini (free)",
   "scripts": {
     "dev": "vite",
     "build": "vite build",
@@ -26,7 +26,6 @@
     "mac": { "target": "dmg" }
   },
   "dependencies": {
-    "@anthropic-ai/sdk": "^0.39.0",
     "express": "^4.21.0",
     "react": "^19.0.0",
     "react-dom": "^19.0.0"
